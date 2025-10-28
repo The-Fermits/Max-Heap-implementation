@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std ; 
+
+void heapify(vector<int> &arr, int i, int n){
+int largest = i ; 
+int left = 2*i + 1; 
+int right = 2*i + 2;
+
+if(left < n  && arr[left] > arr[largest]) largest = left ; 
+if(right < n  && arr[right] > arr[largest]) largest = right ; 
+
+if(largest != i) {
+    swap(arr[largest],arr[i]) ;
+    heapify(arr,largest,n);
+}
+}
+
+void build_max_heap (vector<int> &arr, int n) {
+    for(int i = (n)/2 - 1 ; i>=0; i--){
+      heapify(arr,i,n) ;
+    }
+}
+
+void add_node(vector<int> &arr, int x) {
+arr.push_back(x) ; 
+int n = arr.size() ; 
+int i = n-1; 
+while( i > 0 && (i-1)/2 >=0  && arr[(i-1)/2] < arr[i]) {
+    swap(arr[(i-1)/2],arr[i]) ; 
+    i = (i-1)/2 ;
+}
+}
+
+void remove_node(vector<int>&arr){
+    int n = arr.size() ; 
+    arr[0] = arr[n-1] ; 
+    arr.pop_back() ; 
+    heapify(arr,0,n-1);
+}
+
+
+int main () {
+
+vector<int> arr = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
+int n = arr.size() ; 
+
+build_max_heap(arr,n) ;
+
+for(auto v : arr) cout << v << " " ;
+
+
+}
