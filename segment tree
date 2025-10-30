@@ -44,6 +44,7 @@ tree[node]  = tree[2*node] + tree[2*node+1];
 void update (int node , int start , int end , int i, int x) {
 if(start==end) {
     a[start] = x ;
+tree[node] = x ;
 }
 int mid = (start+end) / 2; 
 if(i<=mid) update(2*node, start , mid , i, x) ; 
