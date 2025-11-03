@@ -1,0 +1,82 @@
+
+#include <bits/stdc++.h>
+#define ll long long
+#define int long long
+#define pb push_back
+#define popb pop_back
+#define INT_MAX 1e9+15
+#define INT_MIN -(1e9+15)
+
+
+
+using namespace std;
+using vpii = vector<pair<int, int>>;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+#define ff first
+#define ss second
+#define endl '\n'
+#define all(x) x.begin(), x.end()
+#define sz(x) (int)(x).size()
+const int inf = 9e18;
+const int mod = 1e9 + 7;
+const int NUM = 1000030;
+const int NN = 10000000;
+//-----------------------------------------------------------------------------------------------
+/*---------------------C O D E -------------------------------------------------------------------------------
+------------------------H E R E ---------------------------------------------------------------------------*/
+
+struct Node {
+    int val ;
+    Node* left ; 
+    Node* right ; 
+
+    Node(int v) : val(v) , left ( nullptr ), right (nullptr) {}
+} ; 
+
+void pre_order(Node* root) {
+    if(root==nullptr) return ;
+    cout << root->val << " " ;
+    pre_order(root->left);
+    pre_order(root->right);
+}
+
+void in_order(Node* root) {
+    if(root==nullptr) return ;
+    pre_order(root->left);
+    cout << root->val << " " ;
+    pre_order(root->right);
+}
+
+void post_order(Node* root) {
+    if(root==nullptr) return ;
+    pre_order(root->left);
+    pre_order(root->right);
+    cout << root->val << " " ;
+}
+
+
+void solve()
+{
+   Node* root = new Node(1);
+   root->left = new Node(2);
+   root->right = new Node(3); 
+   root->left->left = new Node(4);
+
+   pre_order(root);
+
+}
+/*--------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------*/
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int t = 1;
+    cin >> t;
+    while (t--)
+        solve();
+        
+    return 0;
+}
